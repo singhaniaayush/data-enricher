@@ -20,6 +20,17 @@ public class Test {
 
 		System.out.println("--------------------------------------------------------------------------------");
 		System.out.println("********************************************************************************");
+		System.out.println("Input");
+		System.out.println("********************************************************************************");
+		System.out.println("--------------------------------------------------------------------------------");
+		
+		input.forEach((k,v) -> {
+			System.out.println("key: " + k + " value:" + v);
+		});
+
+		
+		System.out.println("--------------------------------------------------------------------------------");
+		System.out.println("********************************************************************************");
 		System.out.println("Output");
 		System.out.println("********************************************************************************");
 		System.out.println("--------------------------------------------------------------------------------");
@@ -34,12 +45,12 @@ public class Test {
 		Map<String, Object> output = new HashMap<>(input.size());
 		// iterate over the map
 		input.forEach((k, v) -> {
-			System.out.println("key: " + k + " value:" + v);
+//			System.out.println("key: " + k + " value:" + v);
 			// instanceOf check/ typeCastException check
 			// primitive
 			Object outputData = helperFn(v);
 			if (output != null) {
-				output.put(k, outputData);
+				output.put(k.toUpperCase(), outputData);
 			}
 		});
 		return output;
@@ -47,7 +58,7 @@ public class Test {
 
 	private static Object helperFn(Object v) {
 		if (validateType(v, String.class)) {
-			return new String(v.toString());
+			return new String(v.toString()).toUpperCase();
 
 		} else if (validateType(v, Double.class)) {
 			return new Double(v.toString());
