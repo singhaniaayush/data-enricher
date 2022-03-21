@@ -25,12 +25,12 @@ public class DataEnricherListener {
 	public void dataCreatorListener(@Payload JsonNode message,
 			@Header(name = KafkaHeaders.RECEIVED_MESSAGE_KEY, required = false) Integer key,
 			@Header(KafkaHeaders.RECORD_METADATA) ConsumerRecordMetadata meta) {
-		log.info("CacheListener|message:{}", message);
-		log.info("CacheListener|offset:{}", meta.offset());
-		log.info("CacheListener|partition:{}", meta.partition());
-		log.info("CacheListener|timestamp:{}", meta.timestamp());
-		log.info("CacheListener|timestampType:{}", meta.timestampType());
-		log.info("CacheListener|key:{}", key);
+		log.info("DataEnricherListener|message:{}", message);
+		log.info("DataEnricherListener|offset:{}", meta.offset());
+		log.info("DataEnricherListener|partition:{}", meta.partition());
+		log.info("DataEnricherListener|timestamp:{}", meta.timestamp());
+		log.info("DataEnricherListener|timestampType:{}", meta.timestampType());
+		log.info("DataEnricherListener|key:{}", key);
 
 		dataEnricherServiceImpl.encrichData(message);
 	}

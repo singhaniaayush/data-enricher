@@ -25,12 +25,12 @@ public class DataGatewayListener {
 	public void dataCreatorListener(@Payload JsonNode message,
 			@Header(name = KafkaHeaders.RECEIVED_MESSAGE_KEY, required = false) Integer key,
 			@Header(KafkaHeaders.RECORD_METADATA) ConsumerRecordMetadata meta) {
-		log.info("CacheListener|message:{}", message);
-		log.info("CacheListener|offset:{}", meta.offset());
-		log.info("CacheListener|partition:{}", meta.partition());
-		log.info("CacheListener|timestamp:{}", meta.timestamp());
-		log.info("CacheListener|timestampType:{}", meta.timestampType());
-		log.info("CacheListener|key:{}", key);
+		log.info("DataGatewayListener|message:{}", message);
+		log.info("DataGatewayListener|offset:{}", meta.offset());
+		log.info("DataGatewayListener|partition:{}", meta.partition());
+		log.info("DataGatewayListener|timestamp:{}", meta.timestamp());
+		log.info("DataGatewayListener|timestampType:{}", meta.timestampType());
+		log.info("DataGatewayListener|key:{}", key);
 
 		dataGatewayServiceImpl.encrichData(message);
 	}
